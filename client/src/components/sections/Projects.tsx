@@ -68,7 +68,9 @@ const Projects = () => {
                     <div className="text-white text-center">
                       <project.icon className="w-16 h-16 mb-4 mx-auto" />
                       <h4 className="text-xl font-bold">
-                        {project.title === "Handwritten Digit Recognition" ? "NLP/ML" : project.title.split(' ')[0]}
+                        {project.title === "Handwritten Digit Recognition" ? "NLP/ML" : 
+                         project.title === "Advanced Firewall Implementation Project" ? "Cyber Security" : 
+                         project.title.split(' ')[0]}
                       </h4>
                     </div>
                   </div>
