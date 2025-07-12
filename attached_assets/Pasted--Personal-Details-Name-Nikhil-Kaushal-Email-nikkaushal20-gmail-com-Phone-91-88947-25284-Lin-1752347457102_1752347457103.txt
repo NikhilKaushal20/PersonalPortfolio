@@ -1,0 +1,88 @@
+🔹 Personal Details
+Name: Nikhil Kaushal
+
+Email: nikkaushal20@gmail.com
+
+Phone: +91 88947 25284
+
+LinkedIn: linkedin.com/in/nikhilkaushal20
+
+GitHub: github.com/NikhilKaushal20
+
+🔹 Summary
+Detail-oriented Computer Science student with hands-on experience in DevOps, AI, and software testing. Skilled in:
+
+CI/CD pipelines (Jenkins, GitHub Actions)
+
+Test automation
+
+Containerized deployments (Docker)
+
+Full-stack development
+
+🔹 Skills
+Languages: Python, C++, Java, JavaScript
+
+Web Technologies: HTML, CSS
+
+Tools & Platforms: AWS, Jenkins, Docker, GitHub, Selenium, Eclipse, Jira, Katalon Studio
+
+Testing Methodologies: Automation, Unit, Integration, API Testing, Agile, Scrum
+
+Soft Skills: Problem-solving, Teamwork, Adaptability
+
+Domains: DevOps, Software Testing
+
+🔹 Projects
+🔸 Full-Stack GenAI RAG Chatbot
+Containerized chatbot with OpenAI, FAISS, LangChain, FastAPI & Streamlit
+
+Answers user queries based on uploaded PDF documents
+
+GitHub
+
+🔸 Handwritten Digit Recognition
+CNN using TensorFlow and OpenCV (97%+ accuracy on MNIST)
+
+Automated CI/CD pipeline with Docker and Jenkins
+
+GitHub
+
+🔸 Basic Firewall Project
+Built in Python with Flask
+
+Rule-based filtering, authentication, and blacklist/whitelist control
+
+GitHub
+
+🔹 Training & Internships
+Deloitte Technology Consulting Virtual Internship – Real-time IIoT data transformation, secure enterprise design
+
+DevOps Project-Based Training – CI/CD pipelines with Docker, Jenkins
+
+Cybersecurity - CipherSchools – Network security, firewall project
+
+🔹 Certifications
+Generative AI with LLMs
+
+Prompt Engineering for ChatGPT
+
+Cybersecurity – Live
+
+Web & Mobile Testing with Selenium
+
+Introduction to Software Engineering
+
+Deloitte Technology Consulting Internship
+
+🔹 Education
+B.Tech (CSE) – Lovely Professional University (Since Aug 2022)
+
+Diploma in Computer Application – ICTO Dhaliara (2022–2023)
+
+Intermediate – Govt. Sr. Sec. School, Badhal Thore (2021–2022)
+
+Matriculation – Saraswati Vidya Niketan, Batwar (2019–2020)
+
+🔹 Extra-Curricular Activities
+Environmental Training – HP Forest Department (Plantation, Ecology, Environment)
