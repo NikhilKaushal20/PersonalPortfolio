@@ -15,9 +15,7 @@ const Hero = () => {
             className="text-center md:text-left"
           >
             <div className="inline-block mb-4">
-              <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold">
-                Chapter 1: The Beginning
-              </span>
+              <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold">Where Passion Took Root</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Hi, I'm <span className="text-blue-600">Nikhil Kaushal</span>
