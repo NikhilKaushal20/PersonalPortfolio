@@ -67,7 +67,9 @@ const Projects = () => {
                   <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
                     <div className="text-white text-center">
                       <project.icon className="w-16 h-16 mb-4 mx-auto" />
-                      <h4 className="text-xl font-bold">{project.title.split(' ')[0]}</h4>
+                      <h4 className="text-xl font-bold">
+                        {project.title === "Handwritten Digit Recognition" ? "NLP/ML" : project.title.split(' ')[0]}
+                      </h4>
                     </div>
                   </div>
                   <CardContent className="p-6">
