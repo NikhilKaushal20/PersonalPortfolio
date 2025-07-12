@@ -20,7 +20,7 @@ const Hero = () => {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Hi, I'm <span className="text-blue-600">Nikhil</span>
+              Hi, I'm <span className="text-blue-600">Nikhil Kaushal</span>
               <br />
               <span className="text-green-600">DevOps & Software Testing</span> Engineer
             </h1>
