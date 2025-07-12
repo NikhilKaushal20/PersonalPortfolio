@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
-import profileImage from "@assets/Screenshot 2025-06-15 160808_1752347471019.png";
+import { Github, Linkedin, Mail, Download, Phone } from "lucide-react";
+import profileImage from "@assets/Screenshot 2025-06-15 160808_1752348194345.png";
 
 const Hero = () => {
   return (
@@ -28,37 +28,81 @@ const Hero = () => {
               Detail-oriented Computer Science student with hands-on experience in DevOps, AI, and software testing. 
               Passionate about building scalable solutions and automating complex workflows.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <a href="#projects">View My Work</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+              <Button asChild variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
                 <a href="#contact">Get In Touch</a>
               </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white"
+                onClick={() => {
+                  fetch('/api/resume/download')
+                    .then(response => response.blob())
+                    .then(blob => {
+                      const url = window.URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'Nikhil_Kaushal_Resume.pdf';
+                      document.body.appendChild(a);
+                      a.click();
+                      window.URL.revokeObjectURL(url);
+                      document.body.removeChild(a);
+                    });
+                }}
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download CV
+              </Button>
             </div>
-            <div className="flex justify-center md:justify-start space-x-6 mt-8">
-              <a
-                href="https://linkedin.com/in/nikhilkaushal20"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors"
-              >
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a
-                href="https://github.com/NikhilKaushal20"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors"
-              >
-                <Github className="h-6 w-6" />
-              </a>
-              <a
-                href="mailto:nikkaushal20@gmail.com"
-                className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors"
-              >
-                <Mail className="h-6 w-6" />
-              </a>
+            
+            <div className="flex justify-center md:justify-start space-x-6">
+              <Button asChild variant="ghost" size="sm" className="hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                <a
+                  href="https://linkedin.com/in/nikhilkaushal20"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-blue-600 hover:text-blue-700"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span>LinkedIn</span>
+                </a>
+              </Button>
+              
+              <Button asChild variant="ghost" size="sm" className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                <a
+                  href="https://github.com/NikhilKaushal20"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                >
+                  <Github className="h-5 w-5" />
+                  <span>GitHub</span>
+                </a>
+              </Button>
+              
+              <Button asChild variant="ghost" size="sm" className="hover:bg-green-50 dark:hover:bg-green-900/20">
+                <a
+                  href="mailto:nikkaushal20@gmail.com"
+                  className="flex items-center space-x-2 text-green-600 hover:text-green-700"
+                >
+                  <Mail className="h-5 w-5" />
+                  <span>Email</span>
+                </a>
+              </Button>
+              
+              <Button asChild variant="ghost" size="sm" className="hover:bg-amber-50 dark:hover:bg-amber-900/20">
+                <a
+                  href="tel:+918894725284"
+                  className="flex items-center space-x-2 text-amber-600 hover:text-amber-700"
+                >
+                  <Phone className="h-5 w-5" />
+                  <span>Call</span>
+                </a>
+              </Button>
             </div>
           </motion.div>
           

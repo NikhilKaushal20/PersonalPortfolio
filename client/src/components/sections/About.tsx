@@ -80,9 +80,9 @@ const About = () => {
                 <CardContent className="p-6">
                   <h3 className="text-2xl font-bold mb-4 text-amber-600">Beyond Code</h3>
                   <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
-                    When I'm not coding, I'm exploring environmental conservation through my training 
-                    with the HP Forest Department, learning about plantation processes and ecological zones. 
-                    This blend of technology and environmental consciousness shapes my holistic approach to problem-solving.
+                    When I'm not coding, I'm exploring new AI tech tools and staying updated with the latest innovations. 
+                    I love spending time in nature, listening to music, and gaming. This diverse range of interests 
+                    helps me approach problems from different perspectives and keeps my creativity flowing.
                   </p>
                 </CardContent>
               </Card>
