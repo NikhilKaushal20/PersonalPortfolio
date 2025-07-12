@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
+import { sendContactNotification } from "./emailService";
 import { z } from "zod";
 import path from "path";
 import fs from "fs";
@@ -13,11 +14,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const contactData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(contactData);
       
-      // Here you would typically send an email notification
-      // For now, we'll just log it and return success
-      console.log("New contact form submission:", contact);
+      // Send email notification
+      const emailSent = await sendContactNotification(contactData);
       
-      res.json({ success: true, message: "Message sent successfully" });
+      if (emailSent) {
+        console.log("New contact form submission and email notification sent:", contact);
+        res.json({ success: true, message: "Message sent successfully! I'll get back to you soon." });
+      } else {
+        console.log("Contact form submitted but email notification failed:", contact);
+        res.json({ success: true, message: "Message sent successfully! (Note: Email notification may have failed)" });
+      }
     } catch (error) {
       console.error("Error processing contact form:", error);
       if (error instanceof z.ZodError) {
