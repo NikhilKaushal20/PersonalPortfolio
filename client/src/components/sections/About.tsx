@@ -15,9 +15,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <span className="px-4 py-2 bg-green-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">
-              Chapter 2: The Journey
-            </span>
+            <span className="px-4 py-2 bg-green-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">The Grind Behind the Growth</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               A passionate technologist on a mission to bridge the gap between development and operations, 
