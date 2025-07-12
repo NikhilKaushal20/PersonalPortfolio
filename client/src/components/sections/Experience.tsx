@@ -52,9 +52,7 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <span className="px-4 py-2 bg-green-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">
-              Chapter 5: The Experience
-            </span>
+            <span className="px-4 py-2 bg-green-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">Lessons from the Field</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Professional Journey</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Continuous learning through internships, training programs, and hands-on projects
