@@ -1,10 +1,5 @@
-import sgMail from '@sendgrid/mail';
-
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error("SENDGRID_API_KEY environment variable must be set");
-}
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// Simple contact form logging service
+// No external dependencies required
 
 interface ContactFormData {
   name: string;
@@ -13,43 +8,59 @@ interface ContactFormData {
   message: string;
 }
 
-export async function sendContactNotification(formData: ContactFormData): Promise<boolean> {
+export async function logContactSubmission(formData: ContactFormData): Promise<boolean> {
   try {
-    const emailContent = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${formData.name}</p>
-      <p><strong>Email:</strong> ${formData.email}</p>
-      <p><strong>Subject:</strong> ${formData.subject}</p>
-      <p><strong>Message:</strong></p>
-      <p>${formData.message.replace(/\n/g, '<br>')}</p>
-      <hr>
-      <p><em>This message was sent from your portfolio website contact form.</em></p>
-    `;
-
-    const msg = {
-      to: 'nikkaushal20@gmail.com', // Your email
-      from: 'nikkaushal20@gmail.com', // Must be verified with SendGrid
-      subject: `Portfolio Contact: ${formData.subject}`,
-      html: emailContent,
-      text: `
-        New Contact Form Submission
-        
-        Name: ${formData.name}
-        Email: ${formData.email}
-        Subject: ${formData.subject}
-        
-        Message:
-        ${formData.message}
-        
-        This message was sent from your portfolio website contact form.
-      `
-    };
-
-    await sgMail.send(msg);
-    console.log('Email notification sent successfully');
+    // Log the contact form submission to console
+    console.log("\n" + "=".repeat(60));
+    console.log("📧 NEW CONTACT FORM SUBMISSION");
+    console.log("=".repeat(60));
+    console.log(`👤 Name: ${formData.name}`);
+    console.log(`📧 Email: ${formData.email}`);
+    console.log(`📝 Subject: ${formData.subject}`);
+    console.log(`💬 Message: ${formData.message}`);
+    console.log(`⏰ Time: ${new Date().toLocaleString()}`);
+    console.log("=".repeat(60));
+    console.log("✅ Contact form logged successfully!");
+    console.log("📧 Reach back via: nikkaushal20@gmail.com");
+    console.log("📱 Phone: +91 88947 25284");
+    console.log("=".repeat(60) + "\n");
+    
     return true;
   } catch (error) {
-    console.error('SendGrid email error:', error);
+    console.error("Error logging contact submission:", error);
+    return false;
+  }
+}
+
+// Optional: Save to file for persistence
+export async function saveContactToFile(formData: ContactFormData): Promise<boolean> {
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    
+    const contactsFile = path.join(process.cwd(), 'contacts.json');
+    let contacts = [];
+    
+    // Read existing contacts if file exists
+    if (fs.existsSync(contactsFile)) {
+      const data = fs.readFileSync(contactsFile, 'utf8');
+      contacts = JSON.parse(data);
+    }
+    
+    // Add new contact
+    contacts.push({
+      ...formData,
+      id: Date.now(),
+      timestamp: new Date().toISOString()
+    });
+    
+    // Save to file
+    fs.writeFileSync(contactsFile, JSON.stringify(contacts, null, 2));
+    
+    console.log(`📁 Contact saved to ${contactsFile}`);
+    return true;
+  } catch (error) {
+    console.error("Error saving contact to file:", error);
     return false;
   }
 }

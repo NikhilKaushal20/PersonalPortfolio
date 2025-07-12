@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
-import { sendContactNotification } from "./emailService";
+import { logContactSubmission, saveContactToFile } from "./emailService";
 import { z } from "zod";
 import path from "path";
 import fs from "fs";
@@ -14,27 +14,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const contactData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(contactData);
       
-      // Send email notification
-      const emailSent = await sendContactNotification(contactData);
+      // Log the contact form submission
+      await logContactSubmission(contactData);
       
-      // Always log the contact form submission for monitoring
-      console.log("=".repeat(50));
-      console.log("🔔 NEW CONTACT FORM SUBMISSION");
-      console.log("=".repeat(50));
-      console.log(`📧 From: ${contactData.name} <${contactData.email}>`);
-      console.log(`📱 Phone: +91 88947 25284`);
-      console.log(`📝 Subject: ${contactData.subject}`);
-      console.log(`💬 Message: ${contactData.message}`);
-      console.log(`⏰ Time: ${new Date().toLocaleString()}`);
-      console.log("=".repeat(50));
+      // Optionally save to file for persistence
+      await saveContactToFile(contactData);
       
-      if (emailSent) {
-        console.log("✅ Email notification sent successfully!");
-        res.json({ success: true, message: "Message sent successfully! I'll get back to you soon." });
-      } else {
-        console.log("❌ Email notification failed - check console for details");
-        res.json({ success: true, message: "Message sent successfully! I'll get back to you soon." });
-      }
+      res.json({ 
+        success: true, 
+        message: `Thank you for reaching out! I'll get back to you soon at ${contactData.email}`,
+        contactId: contact.id
+      });
     } catch (error) {
       console.error("Error processing contact form:", error);
       if (error instanceof z.ZodError) {
