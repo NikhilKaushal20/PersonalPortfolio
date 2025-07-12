@@ -94,9 +94,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">
-              Chapter 6: Let's Connect
-            </span>
+            <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">Bridging the Gap</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Ready to collaborate on innovative projects or discuss opportunities in DevOps and AI? Let's start a conversation.
