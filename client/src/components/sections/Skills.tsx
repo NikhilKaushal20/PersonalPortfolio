@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Skills = () => {
@@ -11,34 +11,22 @@ const Skills = () => {
       title: "Languages",
       icon: "fas fa-code",
       color: "text-blue-600",
-      skills: [
-        { name: "Python", level: 90 },
-        { name: "Java", level: 85 },
-        { name: "C++", level: 80 },
-        { name: "JavaScript", level: 75 },
-      ],
+      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      skills: ["Python", "Java", "C++", "JavaScript"],
     },
     {
-      title: "DevOps & Tools",
+      title: "Tools & Platforms",
       icon: "fas fa-cogs",
       color: "text-green-600",
-      skills: [
-        { name: "Docker", level: 90 },
-        { name: "Jenkins", level: 85 },
-        { name: "AWS", level: 75 },
-        { name: "Git/GitHub", level: 95 },
-      ],
+      bgColor: "bg-green-50 dark:bg-green-900/20",
+      skills: ["Docker", "Jenkins", "AWS", "Git/GitHub", "Selenium", "Eclipse", "Katalon Studio", "Jira"],
     },
     {
       title: "Testing & QA",
       icon: "fas fa-vial",
       color: "text-amber-600",
-      skills: [
-        { name: "Selenium", level: 85 },
-        { name: "API Testing", level: 80 },
-        { name: "Katalon Studio", level: 75 },
-        { name: "Agile/Scrum", level: 90 },
-      ],
+      bgColor: "bg-amber-50 dark:bg-amber-900/20",
+      skills: ["Automation Testing", "Unit Testing", "Integration Testing", "API Testing", "Agile", "Scrum"],
     },
   ];
 
@@ -71,19 +59,19 @@ const Skills = () => {
               >
                 <Card className="h-full shadow-lg hover:shadow-xl transition-shadow">
                   <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-6">
                       <i className={`${category.icon} ${category.color} text-2xl mr-3`}></i>
                       <h3 className="text-xl font-bold">{category.title}</h3>
                     </div>
-                    <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill) => (
-                        <div key={skill.name} className="skill-item">
-                          <div className="flex justify-between mb-2">
-                            <span className="font-semibold">{skill.name}</span>
-                            <span className="text-sm text-gray-600 dark:text-gray-300">{skill.level}%</span>
-                          </div>
-                          <Progress value={isVisible ? skill.level : 0} className="h-2" />
-                        </div>
+                        <Badge 
+                          key={skill} 
+                          variant="secondary" 
+                          className={`${category.bgColor} ${category.color} border-none px-3 py-1`}
+                        >
+                          {skill}
+                        </Badge>
                       ))}
                     </div>
                   </CardContent>
