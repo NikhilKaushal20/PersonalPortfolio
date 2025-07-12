@@ -17,12 +17,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Send email notification
       const emailSent = await sendContactNotification(contactData);
       
+      // Always log the contact form submission for monitoring
+      console.log("=".repeat(50));
+      console.log("🔔 NEW CONTACT FORM SUBMISSION");
+      console.log("=".repeat(50));
+      console.log(`📧 From: ${contactData.name} <${contactData.email}>`);
+      console.log(`📱 Phone: +91 88947 25284`);
+      console.log(`📝 Subject: ${contactData.subject}`);
+      console.log(`💬 Message: ${contactData.message}`);
+      console.log(`⏰ Time: ${new Date().toLocaleString()}`);
+      console.log("=".repeat(50));
+      
       if (emailSent) {
-        console.log("New contact form submission and email notification sent:", contact);
+        console.log("✅ Email notification sent successfully!");
         res.json({ success: true, message: "Message sent successfully! I'll get back to you soon." });
       } else {
-        console.log("Contact form submitted but email notification failed:", contact);
-        res.json({ success: true, message: "Message sent successfully! (Note: Email notification may have failed)" });
+        console.log("❌ Email notification failed - check console for details");
+        res.json({ success: true, message: "Message sent successfully! I'll get back to you soon." });
       }
     } catch (error) {
       console.error("Error processing contact form:", error);
