@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom portfolio colors */
+  --portfolio-primary-50: hsl(248, 100%, 99%);
+  --portfolio-primary-100: hsl(240, 100%, 98%);
+  --portfolio-primary-200: hsl(224, 87%, 96%);
+  --portfolio-primary-300: hsl(215, 87%, 89%);
+  --portfolio-primary-400: hsl(210, 87%, 78%);
+  --portfolio-primary-500: hsl(207, 87%, 64%);
+  --portfolio-primary-600: hsl(207, 87%, 54%);
+  --portfolio-primary-700: hsl(207, 87%, 44%);
+  --portfolio-primary-800: hsl(207, 87%, 34%);
+  --portfolio-primary-900: hsl(207, 87%, 24%);
+  
+  --portfolio-accent-blue: hsl(207, 90%, 54%);
+  --portfolio-accent-emerald: hsl(160, 87%, 34%);
+  --portfolio-accent-amber: hsl(38, 95%, 56%);
+  
+  --portfolio-gray-50: hsl(248, 100%, 99%);
+  --portfolio-gray-100: hsl(240, 100%, 98%);
+  --portfolio-gray-200: hsl(224, 87%, 96%);
+  --portfolio-gray-300: hsl(215, 87%, 89%);
+  --portfolio-gray-400: hsl(210, 87%, 78%);
+  --portfolio-gray-500: hsl(207, 87%, 64%);
+  --portfolio-gray-600: hsl(207, 87%, 54%);
+  --portfolio-gray-700: hsl(207, 87%, 44%);
+  --portfolio-gray-800: hsl(207, 87%, 34%);
+  --portfolio-gray-900: hsl(207, 87%, 24%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .chapter-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .chapter-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .skill-progress {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    width: 100%;
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .project-card {
+    transition: all 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  
+  .floating-nav {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .floating-nav {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .theme-transition {
+    transition: all 0.3s ease;
+  }
+  
+  .tech-tag {
+    background: linear-gradient(135deg, var(--portfolio-accent-blue), var(--portfolio-primary-800));
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .progress-bar {
+    animation: progressBar 2s ease-out forwards;
+  }
+  
+  @keyframes progressBar {
+    0% { width: 0%; }
+    100% { width: var(--progress-width); }
+  }
+}
