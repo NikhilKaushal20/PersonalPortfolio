@@ -48,9 +48,7 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">
-              Chapter 4: The Creations
-            </span>
+            <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold mb-4 inline-block">From Vision to Reality</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Innovative solutions that demonstrate my expertise in DevOps, AI, and full-stack development
