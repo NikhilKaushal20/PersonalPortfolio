@@ -22,7 +22,7 @@ const Hero = () => {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Hi, I'm <span className="text-blue-600">Nikhil</span>
               <br />
-              <span className="text-green-600">DevOps & AI</span> Engineer
+              <span className="text-green-600">DevOps & Software Testing</span> Engineer
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               Detail-oriented Computer Science student with hands-on experience in DevOps, AI, and software testing. 
