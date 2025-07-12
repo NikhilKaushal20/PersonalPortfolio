@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Bot, Brain, Shield } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
@@ -12,7 +12,7 @@ const Projects = () => {
     {
       title: "Full-Stack GenAI RAG Chatbot",
       description: "AI-powered chatbot using OpenAI, FAISS, and LangChain for intelligent document-based Q&A with containerized deployment.",
-      icon: "fas fa-robot",
+      icon: Bot,
       gradient: "from-blue-600 to-green-600",
       tags: ["Python", "FastAPI", "OpenAI", "Docker"],
       date: "July 2025",
@@ -21,16 +21,16 @@ const Projects = () => {
     {
       title: "Handwritten Digit Recognition",
       description: "CNN-based system achieving 97%+ accuracy on MNIST dataset with automated CI/CD pipeline using Jenkins and Docker.",
-      icon: "fas fa-brain",
+      icon: Brain,
       gradient: "from-green-600 to-amber-500",
       tags: ["TensorFlow", "OpenCV", "Jenkins", "Docker"],
       date: "May 2025",
       github: "https://github.com/NikhilKaushal20",
     },
     {
-      title: "Basic Firewall Implementation",
+      title: "Advanced Firewall Implementation Project",
       description: "Python-based firewall with Flask framework featuring authentication, rule-based filtering, and dynamic IP control.",
-      icon: "fas fa-shield-alt",
+      icon: Shield,
       gradient: "from-amber-500 to-red-500",
       tags: ["Python", "Flask", "Security", "Networking"],
       date: "July 2024",
@@ -66,7 +66,7 @@ const Projects = () => {
                 <Card className="project-card h-full shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
                     <div className="text-white text-center">
-                      <i className={`${project.icon} text-6xl mb-4`}></i>
+                      <project.icon className="w-16 h-16 mb-4 mx-auto" />
                       <h4 className="text-xl font-bold">{project.title.split(' ')[0]}</h4>
                     </div>
                   </div>
