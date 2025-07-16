@@ -2,16 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
+import { fileURLToPath } from "url";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
     react(),
-    runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
-      ? [
           (await import("@replit/vite-plugin-cartographer")).cartographer(),
         ]
       : []),
@@ -32,13 +32,20 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
+    port: 3000,
+    open: true,
     port: 3000, // Avoid conflict with backend on 5000
     open: true, // Automatically open browser
     fs: {
       strict: true,
-      deny: ["**/.*"], // Restrict access to dotfiles
+      deny: ["**/.*"],
     },
   },
 });
