@@ -65,10 +65,17 @@ For static deployment without backend functionality:
 ## 🔧 Build Process
 
 The project includes these build commands:
-- `npm run dev` - Development server
+- `npm run dev` - Development server (Unix/Linux/Mac)
+- `dev.bat` - Development server (Windows)
 - `npm run build` - Production build
-- `npm run start` - Production server
+- `npm run start` - Production server (Unix/Linux/Mac)
+- `start.bat` - Production server (Windows)
 - `npm run db:push` - Update database schema
+
+### Windows Users
+If you're on Windows and getting "NODE_ENV is not recognized" error:
+1. Use `dev.bat` instead of `npm run dev`
+2. Or install cross-env globally: `npm install -g cross-env`
 
 ## 📁 Project Structure
 

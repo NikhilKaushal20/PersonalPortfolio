@@ -4,6 +4,12 @@
 
 This is a modern full-stack portfolio application built for showcasing Nikhil Kaushal's professional experience in DevOps, AI, and Software Testing. The application features a responsive design with a React frontend and Express backend, utilizing PostgreSQL for data storage and modern UI components.
 
+## Recent Changes
+- **Migration Completed (July 17, 2025)**: Successfully migrated from Replit Agent to Replit environment
+- **Deployment Ready**: Added Vercel, Netlify, and GitHub Pages deployment configurations
+- **Cross-Platform Support**: Added Windows batch files for local development
+- **Documentation**: Created comprehensive deployment guide and README
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.

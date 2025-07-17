@@ -19,6 +19,13 @@ npm install
 npm run dev
 ```
 
+#### Windows Users
+If you get "NODE_ENV is not recognized" error:
+```bash
+# Use the Windows batch file instead
+dev.bat
+```
+
 ### Production Build
 ```bash
 npm run build
