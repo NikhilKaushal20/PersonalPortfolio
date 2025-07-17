@@ -1,29 +1,58 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertContactSchema } from "@shared/schema";
-import { logContactSubmission, saveContactToFile } from "./emailService";
 import { z } from "zod";
 import path from "path";
 import fs from "fs";
 
+// Simple contact form schema - no database needed
+const contactSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Valid email is required"),
+  subject: z.string().min(1, "Subject is required"),
+  message: z.string().min(1, "Message is required"),
+});
+
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Contact form submission
+  // Contact form submission - simplified
   app.post("/api/contact", async (req, res) => {
     try {
-      const contactData = insertContactSchema.parse(req.body);
-      const contact = await storage.createContact(contactData);
+      const contactData = contactSchema.parse(req.body);
       
-      // Log the contact form submission
-      await logContactSubmission(contactData);
+      // Simple console logging for development
+      console.log("\n" + "=".repeat(50));
+      console.log("📧 NEW CONTACT FORM SUBMISSION");
+      console.log("=".repeat(50));
+      console.log(`👤 Name: ${contactData.name}`);
+      console.log(`📧 Email: ${contactData.email}`);
+      console.log(`📝 Subject: ${contactData.subject}`);
+      console.log(`💬 Message: ${contactData.message}`);
+      console.log(`⏰ Time: ${new Date().toLocaleString()}`);
+      console.log("=".repeat(50) + "\n");
       
-      // Optionally save to file for persistence
-      await saveContactToFile(contactData);
+      // Save to local file for persistence
+      try {
+        const contactsFile = path.join(process.cwd(), 'contacts.json');
+        let contacts = [];
+        
+        if (fs.existsSync(contactsFile)) {
+          const data = fs.readFileSync(contactsFile, 'utf8');
+          contacts = JSON.parse(data);
+        }
+        
+        contacts.push({
+          ...contactData,
+          id: Date.now(),
+          timestamp: new Date().toISOString()
+        });
+        
+        fs.writeFileSync(contactsFile, JSON.stringify(contacts, null, 2));
+      } catch (fileError) {
+        console.log("Note: Could not save to file, but form submission logged");
+      }
       
       res.json({ 
         success: true, 
-        message: `Thank you for reaching out! I'll get back to you soon at ${contactData.email}`,
-        contactId: contact.id
+        message: `Thank you for reaching out! I'll get back to you soon at ${contactData.email}`
       });
     } catch (error) {
       console.error("Error processing contact form:", error);
@@ -55,11 +84,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get all contacts (for admin purposes)
+  // Get all contacts from file
   app.get("/api/contacts", async (req, res) => {
     try {
-      const contacts = await storage.getAllContacts();
-      res.json(contacts);
+      const contactsFile = path.join(process.cwd(), 'contacts.json');
+      
+      if (fs.existsSync(contactsFile)) {
+        const data = fs.readFileSync(contactsFile, 'utf8');
+        const contacts = JSON.parse(data);
+        res.json(contacts);
+      } else {
+        res.json([]);
+      }
     } catch (error) {
       console.error("Error fetching contacts:", error);
       res.status(500).json({ error: "Internal server error" });

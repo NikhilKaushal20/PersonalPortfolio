@@ -38,6 +38,12 @@ npm run build
 npm start
 ```
 
+### Local Development Notes
+- App runs on `http://localhost:5000`
+- Contact form saves to `contacts.json` file
+- No database setup required
+- Resume download works from `attached_assets` folder
+
 ## 🛠 Tech Stack
 
 ### Frontend

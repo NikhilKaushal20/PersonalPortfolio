@@ -1,6 +1,6 @@
 # Deployment Guide
 
-Your portfolio is now ready for deployment on multiple platforms! Here are the configurations provided:
+Your simplified portfolio is now ready for deployment! No database required.
 
 ## 🚀 Vercel Deployment
 
@@ -9,16 +9,15 @@ Your portfolio is now ready for deployment on multiple platforms! Here are the c
    - Connect your GitHub repo to Vercel
    - Vercel will automatically detect the `vercel.json` configuration
 
-2. **Environment Variables:**
-   ```
-   NODE_ENV=production
-   DATABASE_URL=your_postgresql_connection_string
-   ```
-
-3. **Build Settings:**
+2. **Build Settings:**
    - Build Command: `npm run build`
    - Output Directory: `dist/public`
    - Install Command: `npm install`
+
+3. **Environment Variables (Optional):**
+   ```
+   NODE_ENV=production
+   ```
 
 ## 🌐 Netlify Deployment
 
@@ -48,19 +47,17 @@ For static deployment without backend functionality:
 
 2. **Deploy the `dist/public` folder to GitHub Pages**
 
-## 📊 Database Options
+## 📊 Data Storage (Simplified)
 
-### Free Database Providers:
-- **Neon.tech** (PostgreSQL) - 10GB free
-- **Supabase** (PostgreSQL) - 500MB free
-- **PlanetScale** (MySQL) - 5GB free
-- **Railway** (PostgreSQL) - 5GB free
+### Local Development:
+- Contact form submissions are saved to `contacts.json` file
+- No database setup required
+- Data persists between server restarts
 
-### Setup Steps:
-1. Create a database on your chosen provider
-2. Copy the connection string
-3. Add it as `DATABASE_URL` environment variable
-4. Run `npm run db:push` to create tables
+### Production:
+- Contact form submissions are logged to console
+- For persistent storage, add your own database solution
+- Current setup works for basic portfolio needs
 
 ## 🔧 Build Process
 
