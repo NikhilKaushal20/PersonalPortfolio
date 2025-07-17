@@ -19,18 +19,7 @@ npm install
 npm run dev
 ```
 
-#### Windows Users
-If you get "NODE_ENV is not recognized" error:
-
-**For Command Prompt:**
-```cmd
-.\dev.bat
-```
-
-**For PowerShell:**
-```powershell
-.\dev.ps1
-```
+Now works on all platforms (Windows, Mac, Linux) thanks to cross-env!
 
 ### Production Build
 ```bash

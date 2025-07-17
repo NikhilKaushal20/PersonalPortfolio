@@ -9,20 +9,12 @@ npm install
 
 ### 2. Start Development Server
 
-**Mac/Linux:**
+**All Platforms (Windows, Mac, Linux):**
 ```bash
 npm run dev
 ```
 
-**Windows (PowerShell):**
-```powershell
-.\dev.ps1
-```
-
-**Windows (Command Prompt):**
-```cmd
-.\dev.bat
-```
+Cross-platform compatibility achieved with cross-env!
 
 ### 3. Open Your Portfolio
 Visit: `http://localhost:5000`
