@@ -74,8 +74,15 @@ The project includes these build commands:
 
 ### Windows Users
 If you're on Windows and getting "NODE_ENV is not recognized" error:
-1. Use `dev.bat` instead of `npm run dev`
-2. Or install cross-env globally: `npm install -g cross-env`
+
+**Option 1 - Use the provided scripts:**
+- Command Prompt: `.\dev.bat`
+- PowerShell: `.\dev.ps1`
+
+**Option 2 - Install cross-env globally:**
+```bash
+npm install -g cross-env
+```
 
 ## 📁 Project Structure
 
